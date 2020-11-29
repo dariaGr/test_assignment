@@ -1,25 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import Header from "./components/Header";
+import Profile from "./components/Profile";
+import Position from "./components/Position";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+	constructor() {
+		super();
+		this.state = {
+			name: "Андрей Снигирёв",
+			profession: "UX/UI designer",
+			responses: 0,
+			views: 0,
+			salary: "35 000 руб.",
+			experience: "9 месяцев",
+			conditions: "Полная занятость, удалённая работа",
+		};
+	}
+
+	render() {
+		const { name, profession, responses, views, salary, experience, conditions } = this.state;
+
+		return (
+			<div>
+				<Header />
+				<div className="main">
+					<Profile name={name} profession={profession} responses={responses} views={views} />
+					<Position profession={profession} salary={salary} experience={experience} conditions={conditions} />
+				</div>
+			</div>
+		);
+	}
 }
 
 export default App;
